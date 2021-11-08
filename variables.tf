@@ -59,3 +59,9 @@ variable "mode" {
   description = "The mode of operation for the module (setup)"
   default     = ""
 }
+
+variable "toolkit_namespace" {
+  type        = string
+  description = "Namespace where the toolkit utilities are installed"
+  default     = ""
+}
