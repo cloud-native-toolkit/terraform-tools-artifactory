@@ -9,13 +9,13 @@ dependencies:
   repository: https://charts.jfrog.io/
   version: 9.4.5
 - name: ocp-route
-  repository: https://ibm-garage-cloud.github.io/toolkit-charts/
-  version: 0.3.0
+  repository: https://charts.cloudnativetoolkit.dev
+  version: 0.5.0
 - name: tool-config
-  repository: https://ibm-garage-cloud.github.io/toolkit-charts/
+  repository: https://charts.cloudnativetoolkit.dev
   version: 0.9.0
 - name: setup-job
-  repository: https://ibm-garage-cloud.github.io/toolkit-charts/
+  repository: https://charts.cloudnativetoolkit.dev
   version: 0.3.0
-digest: sha256:997ef5c2d07fb8d990c6b20c1e3dc4f7e71091f856d169a8bac4d43e416023d7
-generated: "2021-10-04T11:53:41.150147-04:00"
+digest: sha256:1d691f79d5a077bea746ed8cf02214d6e123c738ec2bc99f64e175007b545158
+generated: "2021-11-07T22:36:29.28521-06:00"
