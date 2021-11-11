@@ -157,20 +157,28 @@ resource null_resource artifactory_helm {
   depends_on = [local_file.artifactory-values]
   count = var.mode != "setup" ? 1 : 0
 
+  triggers = {
+    bin_dir = local.bin_dir
+    kubeconfig = var.cluster_config_file
+    chart_version = var.chart_version
+    namespace = var.releases_namespace
+    chart_dir = local.chart_dir
+  }
+
   provisioner "local-exec" {
-    command = "${local.bin_dir}/helm template artifactory ${local.chart_dir} --namespace ${var.releases_namespace} | kubectl apply -n ${var.releases_namespace} -f -"
+    command = "${self.triggers.bin_dir}/helm template artifactory ${self.triggers.chart_dir} -n ${self.triggers.namespace} | kubectl apply -n ${self.triggers.namespace} -f -"
 
     environment = {
-      KUBECONFIG = var.cluster_config_file
+      KUBECONFIG = self.triggers.kubeconfig
     }
   }
 
   provisioner "local-exec" {
     when = destroy
-    command = "${local.bin_dir}/helm template artifactory ${local.chart_dir} --namespace ${var.releases_namespace} | kubectl delete -n ${var.releases_namespace} -f -"
+    command = "${local.bin_dir}/helm template artifactory ${self.triggers.chart_dir} -n ${self.triggers.namespace} | kubectl delete -n ${self.triggers.namespace} -f -"
 
     environment = {
-      KUBECONFIG = var.cluster_config_file
+      KUBECONFIG = self.triggers.kubeconfig
     }
   }
 }
