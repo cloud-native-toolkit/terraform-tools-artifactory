@@ -153,7 +153,7 @@ resource "local_file" "artifactory-values" {
   filename = "${local.chart_dir}/values.yaml"
 }
 
-resource null_resource helm_artifactory {
+resource null_resource artifactory_helm {
   depends_on = [local_file.artifactory-values]
   count = var.mode != "setup" ? 1 : 0
 
@@ -167,7 +167,7 @@ resource null_resource helm_artifactory {
 }
 
 resource null_resource wait-for-config-job {
-  depends_on = [null_resource.helm_artifactory]
+  depends_on = [null_resource.artifactory_helm]
   count = var.mode != "setup" ? 1 : 0
 
   provisioner "local-exec" {
