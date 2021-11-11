@@ -175,7 +175,7 @@ resource null_resource artifactory_helm {
 
   provisioner "local-exec" {
     when = destroy
-    command = "${local.bin_dir}/helm template artifactory ${self.triggers.chart_dir} -n ${self.triggers.namespace} | kubectl delete -n ${self.triggers.namespace} -f -"
+    command = "${self.triggers.bin_dir}/helm template artifactory ${self.triggers.chart_dir} -n ${self.triggers.namespace} | kubectl delete -n ${self.triggers.namespace} -f -"
 
     environment = {
       KUBECONFIG = self.triggers.kubeconfig
