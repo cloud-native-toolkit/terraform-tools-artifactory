@@ -164,6 +164,15 @@ resource null_resource artifactory_helm {
       KUBECONFIG = var.cluster_config_file
     }
   }
+
+  provisioner "local-exec" {
+    when = destroy
+    command = "${local.bin_dir}/helm template artifactory ${local.chart_dir} --namespace ${var.releases_namespace} | kubectl delete -n ${var.releases_namespace} -f -"
+
+    environment = {
+      KUBECONFIG = var.cluster_config_file
+    }
+  }
 }
 
 resource null_resource wait-for-config-job {
