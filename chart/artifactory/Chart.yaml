@@ -19,3 +19,24 @@ version: 0.1.0
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application.
 appVersion: 1.16.0
+
+dependencies:
+  - name: service-account
+    version: 0.6.0
+    repository: https://charts.cloudnativetoolkit.dev
+  - name: service-account
+    version: 0.6.0
+    repository: https://charts.cloudnativetoolkit.dev
+    alias: config-service-account
+  - name: artifactory
+    version: 9.4.5
+    repository: https://charts.jfrog.io/
+  - name: ocp-route
+    version: 0.5.0
+    repository: https://charts.cloudnativetoolkit.dev
+  - name: tool-config
+    version: 0.11.2
+    repository: https://charts.cloudnativetoolkit.dev
+  - name: setup-job
+    version: 0.3.0
+    repository: https://charts.cloudnativetoolkit.dev
