@@ -44,7 +44,8 @@ locals {
     nameOverride = "artifactory"
     artifactory = {
       image = {
-        repository = "docker.bintray.io/jfrog/artifactory-oss"
+        registry = "docker.bintray.io"
+        repository = "jfrog/artifactory-oss"
       }
       adminAccess = {
         password = "admin"
