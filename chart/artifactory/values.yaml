@@ -2,13 +2,13 @@ global: {}
 
 service-account: {}
 
-artifactory: {
+artifactory: 
   systemYaml: |
     shared:
-    node:
+      node:
         ip: 10.241.0.12
 
-}
+
 
 ocp-route: {}
 
