@@ -6,7 +6,7 @@ artifactory:
   systemYaml: 
     shared:
       node:
-        ip: 10.241.0.12
+        ip: 10.241.0.4
 
 
 
