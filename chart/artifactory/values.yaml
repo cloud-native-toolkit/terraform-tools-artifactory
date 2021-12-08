@@ -3,7 +3,7 @@ global: {}
 service-account: {}
 
 artifactory: 
-  systemYaml: |
+  systemYaml: 
     shared:
       node:
         ip: 10.241.0.12
