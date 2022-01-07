@@ -31,7 +31,7 @@ modules can help provide the required information:
 
 - Cluster - https://github.com/ibm-garage-cloud/terraform-ibm-container-platform
 - Namespace - https://github.com/ibm-garage-cloud/terraform-k8s-namespace
-- Dashboard - https://github.com/ibm-garage-cloud/terraform-tools-dashboard
+- Console Link Job - https://github.com/cloud-native-toolkit/terraform-k8s-console-link-job
 
 ## Example usage
 
@@ -39,11 +39,12 @@ modules can help provide the required information:
 module "dev_tools_artifactory" {
   source = "github.com/ibm-garage-cloud/terraform-tools-artifactory.git?ref=v1.6.4"
 
-  cluster_type             = module.dev_cluster.type_code
-  cluster_ingress_hostname = module.dev_cluster.ingress_hostname
+  cluster_type             = module.dev_cluster.platform.type_code
+  cluster_ingress_hostname = module.dev_cluster.platform.ingress
   cluster_config_file      = module.dev_cluster.config_file_path
-  tls_secret_name          = module.dev_cluster.tls_secret_name
-  releases_namespace       = module.dev_tools_namespace.name
-  icon_url                 = module.dev_dashboard.base_icon_url
+  tls_secret_name          = module.dev_cluster.platform.tls_secret
+  releases_namespace       = module.dev_capture_state.namespace
+  service_account          = "artifactory-artifactory"
+  persistence              = false
 }
 ```
